@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Déverrouiller le Cadenas</title>
+    <style>
+        body {
+            background-color: black;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        h1 {
+            text-shadow: 0 0 10px #00ff00;
+        }
+        .sudoku {
+            display: inline-block;
+            border: 2px solid #00ff00;
+            padding: 10px;
+            margin: 20px auto;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(9, 40px);
+            gap: 2px;
+        }
+        .cell {
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            border: 1px solid #00ff00;
+            font-size: 1.2rem;
+            background-color: black;
+            color: #00ff00;
+        }
+        .highlight {
+            background-color: rgba(0, 255, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 class="glitch">🔐 Déverrouiller le Cadenas 🔐</h1>
+    <p>Un cadenas protège le casier d'Eva... Le code à 4 chiffres est caché dans ce Sudoku.</p>
+    <p>Identifiez les <strong>chiffres manquants</strong> de gauche à droite.</p>
+
+    <div class="sudoku">
+        <div class="grid">
+            <div class="cell">5</div>
+            <div class="cell highlight">?</div>
+            <div class="cell">3</div>
+            <div class="cell">7</div>
+            <div class="cell">?</div>
+            <div class="cell">2</div>
+            <div class="cell">1</div>
+            <div class="cell">9</div>
+            <div class="cell highlight">?</div>
+            <div class="cell">4</div>
+            <div class="cell">9</div>
+            <div class="cell">1</div>
+            <div class="cell">6</div>
+            <div class="cell">3</div>
+            <div class="cell">9</div>
+            <div class="cell">8</div>
+            <div class="cell">3</div>
+            <div class="cell">1</div>
+            <div class="cell">7</div>
+            <div class="cell">6</div>
+            <div class="cell">8</div>
+            <div class="cell">8</div>
+            <div class="cell">1</div>
+            <div class="cell">9</div>
+            <div class="cell">3</div>
+            <div class="cell">1</div>
+            <div class="cell">4</div>
+            <div class="cell highlight">?</div>
+        </div>
+    </div>
+
+    <input type="text" id="code" placeholder="Entrez le code">
+    <button class="start-btn" onclick="checkCode()">Déverrouiller</button>
+</div>
+
+<script>
+    function checkCode() {
+        let code = document.getElementById('code').value;
+        if (code === "XXXX") {  // Remplace par la vraie solution
+            alert("Cadenas déverrouillé !");
+            window.location.href = 'casier_eva.html'; // Redirige vers la page suivante
+        } else {
+            alert("Code incorrect, essayez encore.");
+        }
+    }
+</script>
+</body>
+</html>

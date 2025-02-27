@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Compromis - CTF</title>
+    <style>
+        body {
+            background-color: black;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        h1 {
+            text-shadow: 0 0 10px #00ff00;
+        }
+        .glitch {
+            font-size: 2rem;
+            font-weight: bold;
+            animation: glitch 1s infinite;
+        }
+        @keyframes glitch {
+            0% { text-shadow: 2px 2px red, -2px -2px blue; }
+            50% { text-shadow: -2px -2px red, 2px 2px blue; }
+            100% { text-shadow: 2px -2px blue, -2px 2px red; }
+        }
+        .img-container img {
+            width: 60%;
+            border: 2px solid #00ff00;
+            box-shadow: 0 0 10px #00ff00;
+            margin-top: 20px;
+        }
+        .start-btn {
+            background: #00ff00;
+            color: black;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .start-btn:hover {
+            background: #009900;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 class="glitch">⚠ AGENT COMPROMIS ⚠</h1>
+    <p>Le service de contrespionnage du lycée a perdu contact avec Eva, une agente infiltrée.</p>
+    <p>Dans son dernier message, elle disait être sur le point de démasquer l'agent ennemi...</p>
+    <p>Depuis, plus aucune nouvelle. Son dernier message énigmatique : <strong>"Follow the white rabbit"</strong></p>
+    <p>Un enseignant ? Un membre du personnel ? Ou même un élève ? À vous de le découvrir !</p>
+    <div class="img-container">
+        <img src="images/EVA.jpeg" alt="Image hacking"> <!-- À remplacer par ton image -->
+    </div>
+    <button class="start-btn" onclick="startGame()" disabled>Commencer l'Enquête</button>
+</div>
+
+<script>
+    function startGame() {
+        window.location.href = 'follow_the_white_rabbit.html'; // Redirige vers la première épreuve
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réseau du Lycée - Connexion</title>
+    <style>
+        body {
+            background-color: black;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        h1 {
+            text-shadow: 0 0 10px #00ff00;
+        }
+        .login-box {
+            background: rgba(0, 255, 0, 0.1);
+            border: 2px solid #00ff00;
+            padding: 15px;
+            width: 300px;
+            margin: 20px auto;
+        }
+        input {
+            background: black;
+            color: #00ff00;
+            border: 1px solid #00ff00;
+            padding: 5px;
+            width: 90%;
+            margin: 5px 0;
+            text-align: center;
+        }
+        .login-btn {
+            background: #00ff00;
+            color: black;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .login-btn:hover {
+            background: #009900;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 class="glitch">🔐 Accès au Réseau du Lycée 🔐</h1>
+    <p>Connexion au compte d'Eva requise. Trouvez son mot de passe pour accéder à ses mails.</p>
+
+    <div class="login-box">
+        <p><strong>Identifiant :</strong> eva@lycee.edu</p>
+        <input type="password" id="password" placeholder="Mot de passe">
+        <button class="login-btn" onclick="checkPassword()">Se connecter</button>
+    </div>
+</div>
+
+<script>
+    function checkPassword() {
+        let password = document.getElementById('password').value;
+        if (password === "followtherabbit") {  // Mot de passe correct
+            alert("Connexion réussie ! Accès aux mails...");
+            window.location.href = 'mails_eva.html'; // Redirige vers la boîte mail
+        } else {
+            alert("Mot de passe incorrect. Essayez encore !");
+        }
+    }
+</script>
+</body>
+</html>
