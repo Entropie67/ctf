@@ -45,40 +45,11 @@
 <body>
 <div class="container">
     <h1 class="glitch">🔐 Déverrouiller le Cadenas 🔐</h1>
-    <p>Un cadenas protège le casier d'Eva... Le code à 4 chiffres est caché dans ce Sudoku.</p>
-    <p>Identifiez les <strong>chiffres manquants</strong> de gauche à droite.</p>
+    <p>Un cadenas protège le casier d'Emma...</p>
 
-    <div class="sudoku">
-        <div class="grid">
-            <div class="cell">5</div>
-            <div class="cell highlight">?</div>
-            <div class="cell">3</div>
-            <div class="cell">7</div>
-            <div class="cell">?</div>
-            <div class="cell">2</div>
-            <div class="cell">1</div>
-            <div class="cell">9</div>
-            <div class="cell highlight">?</div>
-            <div class="cell">4</div>
-            <div class="cell">9</div>
-            <div class="cell">1</div>
-            <div class="cell">6</div>
-            <div class="cell">3</div>
-            <div class="cell">9</div>
-            <div class="cell">8</div>
-            <div class="cell">3</div>
-            <div class="cell">1</div>
-            <div class="cell">7</div>
-            <div class="cell">6</div>
-            <div class="cell">8</div>
-            <div class="cell">8</div>
-            <div class="cell">1</div>
-            <div class="cell">9</div>
-            <div class="cell">3</div>
-            <div class="cell">1</div>
-            <div class="cell">4</div>
-            <div class="cell highlight">?</div>
-        </div>
+
+    <div class="img-container">
+        <img src="images/sudoku.png" alt="Image hacking"> <!-- À remplacer par ton image -->
     </div>
 
     <input type="text" id="code" placeholder="Entrez le code">
@@ -86,14 +57,15 @@
 </div>
 
 <script>
-    function checkCode() {
+        function checkCode() {
         let code = document.getElementById('code').value;
-        if (code === "XXXX") {  // Remplace par la vraie solution
-            alert("Cadenas déverrouillé !");
-            window.location.href = 'casier_eva.html'; // Redirige vers la page suivante
-        } else {
-            alert("Code incorrect, essayez encore.");
-        }
+        let validCode = atob("Nzc3NQ==");
+        if (code === validCode) {
+        alert("Cadenas déverrouillé !");
+        window.location.href = atob("Y2FzaWVyX2VtbWEuaHRtbA==");
+    } else {
+        alert("Code incorrect, essayez encore.");
+    }
     }
 </script>
 </body>
