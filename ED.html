@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion - EcoleDirecte</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #003366, #0066cc);
+            color: #000;
+            text-align: center;
+        }
+        .login-container {
+            background: white;
+            width: 400px;
+            padding: 20px;
+            margin: 100px auto;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+        }
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: block;
+            text-align: center;
+        }
+        .login-btn {
+            background: #007bff;
+            color: white;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+        .login-btn:hover {
+            background: #0056b3;
+        }
+        .logo {
+            width: 150px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="login-container">
+    <img src="images/logoEcoleDirecte.png" alt="Ecole Directe" class="logo">
+    <h2>Connectez-vous</h2>
+    < !-- tu es en mode hackeur là... -- >
+    <input type="text" id="username" value="emma" disabled>
+    <input type="password" id="password" placeholder="Mot de passe">
+    <button class="login-btn" onclick="checkLogin()">Connexion</button>
+    <p style="font-size: 0.8rem; margin-top: 10px;"><a href="#" style="color: #007bff;">Mot de passe oublié ?</a></p>
+</div>
+
+<script>
+    function checkLogin() {
+        let password = document.getElementById('password').value;
+        if (password === "JeNeRateJamaisMaCible") { // Mot de passe caché
+            alert("Connexion réussie ! Accès aux mails...");
+            window.location.href = 'mails_emma.html';
+        } else {
+            alert("Mot de passe incorrect. Essayez encore !");
+        }
+    }
+</script>
+</body>
+</html>

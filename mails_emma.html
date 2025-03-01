@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Messagerie - Le GYMNASE</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      background: #0c4a8f;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+    }
+
+    .logo {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .search-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .search-container input {
+      padding: 5px;
+      border: none;
+      border-radius: 4px;
+    }
+
+    .search-container button {
+      background: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+
+    .container {
+      display: flex;
+    }
+
+    aside {
+      width: 250px;
+      background: white;
+      padding: 15px;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    }
+
+    .new-message {
+      width: 100%;
+      background: #007bff;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-bottom: 15px;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    nav ul li {
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    nav ul li.active {
+      background: #e0e0e0;
+      font-weight: bold;
+    }
+
+    nav ul li:hover {
+      background: #f4f4f4;
+    }
+
+    .badge {
+      background: #d63384;
+      color: white;
+      padding: 2px 6px;
+      border-radius: 12px;
+      font-size: 12px;
+      margin-left: 5px;
+    }
+
+    .settings {
+      width: 100%;
+      background: #007bff;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    main {
+      flex: 1;
+      padding: 20px;
+      background: white;
+    }
+
+    h2 {
+      margin: 0;
+      padding-bottom: 10px;
+    }
+
+    .message-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .message-list li {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+      transition: background 0.3s;
+    }
+
+    .message-list li:hover {
+      background: #f9f9f9;
+    }
+
+    .message {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sender {
+      font-weight: bold;
+    }
+
+    .subject {
+      color: #666;
+      font-size: 14px;
+    }
+
+    .date {
+      font-size: 12px;
+      color: #888;
+      margin-left: auto;
+    }
+    .message-list li {
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .message-list li:hover {
+      background: #e0e0e0;
+    }
+
+    #message-detail {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    #message-detail button {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    #message-detail button:hover {
+      background: #0056b3;
+    }
+
+
+  </style>
+
+
+</head>
+<body>
+
+<header>
+  <div class="logo">LE GYMNASE</div>
+  <div class="search-container">
+    <input type="text" placeholder="Rechercher">
+    <button>🔍</button>
+  </div>
+</header>
+
+<div class="container">
+  <aside>
+    <button class="new-message">✉️ Nouveau message</button>
+    <nav>
+      <ul>
+        <li class="active">📥 Boîte de réception <span class="badge">232</span></li>
+        <li>📤 Envoyés</li>
+        <li>📂 Brouillons</li>
+        <li>📁 Archivés</li>
+        <li>🏢 Direction</li>
+        <li>➕ Nouveau dossier</li>
+      </ul>
+    </nav>
+    <button class="settings">⚙️ Paramétrage</button>
+  </aside>
+
+  <main>
+    <div id="message-list">
+      <h2>📩 Boîte de réception</h2>
+      <ul class="message-list">
+        <li onclick="openMessage('message1')">
+          <input type="checkbox">
+          <div class="message">
+            <span class="sender">Mme Céline SCHUH</span>
+            <span class="subject">Midi de l'orientation n°47896</span>
+            <span class="date">ven. 28/02 à 16:54</span>
+          </div>
+        </li>
+        <li onclick="openMessage('message2')">
+          <input type="checkbox">
+          <div class="message">
+            <span class="sender">M. Louis AIGRI</span>
+            <span class="subject">Frigo Speechiz sous Linux – Mission critique en cours</span>
+            <span class="date">ven. 28/02 à 16:54</span>
+          </div>
+        </li>
+        <li onclick="openMessage('message3')">
+          <input type="checkbox">
+          <div class="message">
+            <span class="sender">Mme Yi-San MICHAUT</span>
+            <span class="subject">RE: 你好</span>
+            <span class="date">ven. 28/02 à 14:27</span>
+          </div>
+        </li>
+        <li onclick="openMessage('message4')">
+          <input type="checkbox">
+          <div class="message">
+            <span class="sender">M. Olivier ELOPHE</span>
+            <span class="subject">Il n'y a pas vraiment de bonnes ou de mauvaises notes…</span>
+            <span class="date">ven. 28/02 à 11:19</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div id="message-detail" style="display: none;">
+      <button onclick="closeMessage()">⬅️ Retour à la boîte de réception</button>
+      <h3 id="message-title"></h3>
+      <p><em id="message-meta"></em></p>
+      <p id="message-body"></p>
+    </div>
+  </main>
+</div>
+<div>
+  <p>Le code </p>
+  <button class="start-btn" onclick="checkAnswer()">Entrer la solution</button>
+  <input type="text" id="answer" placeholder="Votre réponse">
+</div>
+<script>
+  const messages = {
+    message1: {
+      title: "Midi de l'orientation n°47896",
+      meta: "Mme Céline SCHUH à moi - ven. 28 février 2025 à 16:54",
+      body: "Veuillez vous rendre sur Pearltrees (Pearl Abyss >> pearltrees)"
+    },
+    message2: {
+      title: "Frigo Speechiz sous Linux – Mission critique en cours",
+      meta: "M. Louis AIGRI à moi - ven. 28 février 2025 à 06:54",
+      body: "Emma, c'est Louis. Urgence absolue. Avec Alexis, nous sommes engagés dans une quête qui dépasse le simple bidouillage informatique : nous voulons contrôler notre frigo Speechiz modèle FLAG689743 via nos calculatrices TI-85 sous un MacOS entièrement fait maison. Un défi ? Oui. Une folie ? Peut-être. Une nécessité ? Sans aucun doute.\n" +
+              "\n" +
+              "Nous avons plongé dans les abysses des archives numériques et avons réussi à mettre la main sur la documentation de la toute première TI-3. Pourquoi ? Parce qu’elle contenait un bout de code en assembleur préhistorique qui, selon nos hypothèses les plus audacieuses, pourrait servir de base à une émulation compatible avec le protocole obscure de Speechiz. Seulement, il y a un problème. Enfin… plusieurs.\n" +
+              "\n" +
+              "Problème n°1 : La doc est partiellement en sumérien.\n" +
+              "Problème n°2 : Certaines pages semblent avoir été écrites sous l’influence d’une forte dose de caféine et de désespoir.\n" +
+              "Problème n°3 : Le service client de Speechiz, basé à Okaido (qui n’est pas au Japon mais semble être une île perdue où le WiFi a été interdit en 2003), ne maintient plus le software. Leur dernier email contenait seulement \"¯\\(ツ)/¯\". Nous avons pris cela comme un défi personnel.\n" +
+              "\n" +
+              "Face à cette impasse bureaucratique et technologique, nous avons pris une décision radicale : nous avons commandé un kit de LEDs infrarouges et un mini-scanner de fréquence quantique. TECHNIQUEMENT, avec les bons réglages et un peu de magie noire, nous devrions pouvoir intercepter les signaux émis par la carte mère du frigo et les réinterpréter sous un format compréhensible par notre MacOS bricolé. À noter que notre OS maison est encore instable et que le terminal plante quand on tape \"ls\", mais on garde espoir.\n" +
+              "\n" +
+              "On ne dort plus, on code à la lumière des LED IR, on teste, on casse tout, on recommence. Nous ne dormirons pas tant que ce frigo ne tournera pas sous Linux. C’est une question de principe. De dignité. De justice informatique.\n" +
+              "\n" +
+              "Tu peux demander à ton prof de NSI s'il a une idée ? Genre… une méthode pour bypasser le firmware Speechiz ou un moyen d’émuler une architecture ARM-Quantum-Probabiliste sur une TI-85 overclockée à 12 MHz ? Tout conseil est bon à prendre.\n" +
+              "\n" +
+              "PS : Si on réussit, on tente le grille-pain ensuite."
+    },
+    message3: {
+      title: "RE: ",
+      meta: "M. Yi-San Michaut à moi - ven. 28 février 2025 à 16:54",
+      body: "C'est une histoire de fou !\n" +
+              "\n" +
+              "Clémence qui pirate l'ordinateur de son prof de CAV juste pour obtenir la version premium de Wall-E, Simon qui passe tout un week-end coincé dans un ascenseur sans autre compagnie que son propre désespoir… Et moi, moi, j’ai dû exécuter une prise de flamenco sur un élève qui, sûr de lui, est venu me lancer : \"你算哪根葱？\".\n" +
+              "\n" +
+              "Le plus beau ? C’est qu’un professeur lui avait conseillé de me dire ça ! Il est arrivé, triomphant, croquant dans un cornichon, et a prononcé, plein d’assurance : \"老师你算哪根葱？\". À l’heure qu’il est, il doit à peine sortir de l’hôpital. Certains diront que c’est excessif, mais l’honneur et le flamenco ne tolèrent pas l’irrespect.\n" +
+              "\n" +
+              "Mais toi… ton enquête te mène sur un chemin encore plus dangereux. Je ne sais même pas comment je pourrais te transmettre un message codé sans risquer de compromettre la mission. Alors j’ai fait ce que toute personne censée aurait fait dans cette situation :\n" +
+              "\n" +
+              "J’ai demandé l’aide de Mathieu Alderson en personne.\n" +
+              "\n" +
+              'Il a pris un long moment de réflexion, a fixé l\’horizon d’un air grave, puis il a simplement dit :  <img src=\"images/hanyu.png\" alt=\"Illustration\" width=\"600\">'
+    },
+    message4: {
+      title: "Il n'y a pas vraiment de bonnes ou de mauvaises notes…",
+      meta: "M. Olivier Elophe à moi - ven. 28 février 2025 à 02:54",
+      body: "Tout dépend du point de vue, du contexte et, surtout, du degré de préparation – ou plutôt d'improvisation – de l'élève face à cette évaluation surprise. Car qu'est-ce qu'une note, après tout ? Un chiffre inscrit à l'encre indélébile sur une copie trempée d'angoisse ? Un verdict impitoyable, un instant figé où le destin académique bascule entre \"brillant\" et \"peut mieux faire\" ? Ou bien est-ce simplement une représentation arbitraire d'un savoir éphémère, une illusion chiffrée d’une maîtrise plus ou moins convaincante d’un sujet tombé du ciel comme un coup du sort ?\n" +
+              "\n" +
+              "Certains diront qu’une mauvaise note est une injustice, le fruit cruel d’une évaluation impromptue qui ne reflète en rien le génie latent de l’élève, si seulement on lui avait laissé le temps de briller. D'autres, plus fatalistes, considèreront qu’elle est le reflet froid et objectif de leur ignorance momentanée – car oui, la mémoire d’un étudiant est un organisme vivant, capricieux, qui décide parfois de faire grève au moment le plus inopportun.\n" +
+              "\n" +
+              "Mais alors, qu’est-ce qu’une bonne note ? Est-ce une reconnaissance de l’effort et du travail régulier, le triomphe de l’organisation sur le chaos ? Ou est-ce le doux fruit d’une chance inouïe, d’un sujet tombé pile sur le seul chapitre survolé à la va-vite entre deux parties de jeux vidéo et une crise existentielle devant la page blanche ? Et si la véritable justice académique n’était pas tant dans la note elle-même que dans la satisfaction intime d’avoir évité le pire ?\n" +
+              "\n" +
+              "Car au fond, une évaluation surprise n’est-elle pas l’ultime métaphore de la vie ? Nous avançons sans savoir quand tombera l'examen, nous trébuchons sur des questions inattendues, nous essayons de répondre avec plus ou moins d’élégance, espérant que la correction sera clémente et que le professeur, dans son infinie sagesse, saura déceler la lumière dans notre prose hésitante. Et à la fin, nous recevons une note, injuste ou méritée, mais qui, quoi qu'il arrive, ne définira jamais entièrement ce que nous valons vraiment.\n" +
+              "\n" +
+              "Alors, faut-il redouter une évaluation surprise ? Pas vraiment. Après tout, dans la grande partition du savoir, certaines notes sonnent juste, d’autres un peu moins, mais c’est la mélodie d’ensemble qui compte… Et un zéro pointé, ça reste quand même une note, non ?"
+    }
+  };
+
+  function openMessage(messageId) {
+    document.getElementById("message-list").style.display = "none";
+    document.getElementById("message-detail").style.display = "block";
+
+    document.getElementById("message-title").innerHTML = messages[messageId].title;
+    document.getElementById("message-meta").innerHTML = messages[messageId].meta;
+    document.getElementById("message-body").innerHTML = messages[messageId].body;
+  }
+
+  function closeMessage() {
+    document.getElementById("message-list").style.display = "block";
+    document.getElementById("message-detail").style.display = "none";
+  }
+  function checkAnswer() {
+    let password = document.getElementById('answer').value.trim();
+
+    fetch("verify.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: "password=" + encodeURIComponent(password)
+    })
+            .then(response => response.json())
+            .then(data => {
+              if (data.status === "success") {
+                alert("Connexion réussie !");
+                window.location.href = data.redirect;
+              } else {
+                alert(data.message);
+              }
+            });
+  }
+
+</script>
+</body>
+</html>

@@ -41,11 +41,12 @@
 </head>
 <body>
 <div class="container">
-    <h1 class="glitch">🔐 Le Casier d'Eva 🔐</h1>
-    <p>Vous ouvrez le casier d'Eva... À l'intérieur, un message codé.</p>
+    <h1 class="glitch">🔐 Le Casier d'Emma 🔐</h1>
+    <p>Vous ouvrez le casier d'Emma... À l'intérieur, des lutins de Noël, des goddies Ne Zha et... Un message qui manifestement semble chiffré.</p>
+    <p>Vous ne touchez à rien, sachant qu'il faut rendre à Emma ce qui appartient à Emma, et vous essayé de déchiffrer ce massage.</p>
     <div class="clue-box">
         <p><strong>Message trouvé :</strong></p>
-        <p>Wklv lv wkh iluvw fodwvhv.</p>
+        <p>	Yo wakrwaat roz ik skyygmk ikyz ikxzgotksktz wak sky jkiuabkxzky kzgoktz lutjkky. tuay tk inkxinuty vgy yosvrksktz at gmktz otlorzxk sgoy or ygmoz jatk bkxozghrk uxmgtoygzout. yo buay kzky gxxobk paywak rg buay kzky vkaz kzxk jomtk jk vxktjxk rg yaozk jk rktwakzk. rk vxuingot otjoik yk zxuabk jgty rg igyokx igsgxgjk jk irgyyk. Vuax e giikjkx pk t'go waatk inuyk g joxk roa roa roa !</p>
     </div>
     <p>Un simple message ? Ou un code à décrypter ?</p>
     <button class="start-btn" onclick="checkAnswer()">Entrer la solution</button>
@@ -55,13 +56,17 @@
 <script>
     function checkAnswer() {
         let answer = document.getElementById('answer').value.toLowerCase();
-        if (answer === "this is the first clue") {
+        let validAnswer = atob("NjY2");
+        let nextPage = atob("Y2FzaWVyX3RoaUxvd0Vsbw==");
+
+        if (answer === validAnswer) {
             alert("Bravo ! Vous avez déchiffré le message. Passons à l'étape suivante.");
-            window.location.href = 'page3.html'; // Prochaine étape
+            window.location.href = nextPage + ".html";
         } else {
             alert("Ce n'est pas encore ça... Essayez encore !");
         }
     }
 </script>
+
 </body>
 </html>
