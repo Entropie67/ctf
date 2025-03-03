@@ -1,10 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Casier d'Emma</title>
+    <style>
+        body {
+            background-color: black;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        h1 {
+            text-shadow: 0 0 10px #00ff00;
+        }
+        .clue-box {
+            background: rgba(0, 255, 0, 0.1);
+            border: 2px solid #00ff00;
+            padding: 15px;
+            margin: 20px auto;
+            width: 80%;
+            text-align: center;
+        }
+        .start-btn {
+            background: #00ff00;
+            color: black;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .start-btn:hover {
+            background: #009900;
+        }
+    </style>
 </head>
 <body>
+<div class="container">
+    <button class="start-btn" onclick="checkAnswer()">Entrer la solution</button>
+    <input type="text" id="answer" placeholder="Votre réponse">
+</div>
+
+<script>
+    function checkAnswer() {
+        let answer = document.getElementById('answer').value.toLowerCase();
+        let validAnswer = atob("NjY2");
+        let nextPage = atob("Y2FzaWVyX3RoaUxvd0Vsbw==");
+
+        if (answer === validAnswer) {
+            alert("Bravo ! Vous avez déchiffré le message. Passons à l'étape suivante.");
+            window.location.href = nextPage + ".html";
+        } else {
+            alert("Ce n'est pas encore ça... Essayez encore !");
+        }
+    }
+</script>
 
 </body>
 </html>

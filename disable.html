@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le Casier d'Emma</title>
+  <style>
+    body {
+      background-color: black;
+      color: #00ff00;
+      font-family: 'Courier New', monospace;
+      text-align: center;
+    }
+    .container {
+      margin-top: 50px;
+    }
+    h1 {
+      text-shadow: 0 0 10px #00ff00;
+    }
+    .clue-box {
+      background: rgba(0, 255, 0, 0.1);
+      border: 2px solid #00ff00;
+      padding: 15px;
+      margin: 20px auto;
+      width: 80%;
+      text-align: center;
+    }
+    .start-btn {
+      background: #00ff00;
+      color: black;
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      border: none;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    .start-btn:hover {
+      background: #009900;
+    }
+  </style>
+</head>
+<body>
+<p>Le code est : <strong>MATRIX42</strong> </p>
+<div class="container">
+  <button class="start-btn" onclick="checkAnswer()" disabled>Entrer la solution</button>
+  <input type="text" disabled id="answer" placeholder="Votre réponse " >
+</div>
+
+<script>
+  function checkLogin() {
+    let password = document.getElementById('password').value;
+    if (password === "MATRIX42") { // Mot de passe caché dans le JS
+      alert("Connexion réussie ! Accès aux mails...");
+      window.location.href = 'mails_eva.html'; // Redirige vers la boîte mail
+    } else {
+      alert("Mot de passe incorrect. Essayez encore !");
+    }
+  }
+</script>
+
+</body>
+</html>
