@@ -47,16 +47,20 @@
 </div>
 
 <script>
-  function checkLogin() {
-    let password = document.getElementById('password').value;
-    if (password === "MATRIX42") { // Mot de passe caché dans le JS
-      alert("Connexion réussie ! Accès aux mails...");
-      window.location.href = 'mails_eva.html'; // Redirige vers la boîte mail
+  function checkAnswer() {
+    let answer = document.getElementById('answer').value.toLowerCase();
+    let validAnswer = atob("QWxwaGFTdHVybQ=="); // "dulingo" encodé en base64
+    let nextPage = atob("ZGlzYWJsZS5odG1s"); // "lapin.html" encodé en base64
+
+    if (answer === validAnswer) {
+      alert("Bravo ! Vous avez déchiffré le message. Passons à l'étape suivante.");
+      window.location.href = nextPage;
     } else {
-      alert("Mot de passe incorrect. Essayez encore !");
+      alert("Ce n'est pas encore ça... Essayez encore !");
     }
   }
 </script>
+
 
 </body>
 </html>
