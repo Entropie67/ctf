@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一个中国故事</title>
+    <style>
+        body {
+            background-color: black;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        h1 {
+            text-shadow: 0 0 10px #00ff00;
+        }
+        .clue-box {
+            background: rgba(0, 255, 0, 0.1);
+            border: 2px solid #00ff00;
+            padding: 15px;
+            margin: 20px auto;
+            width: 80%;
+            text-align: center;
+        }
+        .start-btn {
+            background: #00ff00;
+            color: black;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .start-btn:hover {
+            background: #009900;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 class="glitch">🔐 一个中国故事 🔐</h1>
+    <p>Vous ouvrez le casier d'Emma... À l'intérieur, des lutins de Noël, des goodies Ne Zha et... Un message qui manifestement semble chiffré.</p>
+    <p>Vous ne touchez à rien, sachant qu'il faut rendre à Emma ce qui appartient à Emma, et vous essayez de déchiffrer ce message.</p>
+
+    <div class="clue-box">
+        <p><strong>Message trouvé :</strong></p>
+        <p>Yo wakrwaat roz ik skyygmk ikyz ikxzgotksktz wak sky jkiuabkxzky kzgoktz lutjkky...</p>
+    </div>
+
+    <p id="hint" oncopy="modifyClipboard(event)">你应该用“<span id="target-word">美女</span>”</p>
+
+    <p>Un simple message ? Ou un code à décrypter ?</p>
+    <button class="start-btn" onclick="checkAnswer()">Entrer la solution</button>
+    <input type="text" id="answer" placeholder="Votre réponse">
+</div>
+
+<script>
+    function modifyClipboard(event) {
+        event.preventDefault(); // Empêche l'action normale de copie
+        const fakeText = "你应该用“帅哥”"; // Texte modifié pour le presse-papier
+
+        navigator.clipboard.writeText(fakeText).then(() => {
+            alert("Texte copié dans le presse-papier !");
+        }).catch(err => {
+            console.error("Erreur de copie : ", err);
+        });
+    }
+
+    function checkAnswer() {
+        let answer = document.getElementById('answer').value.toLowerCase();
+        let validAnswer = atob("5paH5a2X"); // "美女" encodé en base64
+        let nextPage = atob("Y2FzaWVyX3RoaUxvd0Vsbw=="); // "casier_thiLowElo" encodé
+
+        if (answer === validAnswer) {
+            alert("Bravo ! Vous avez déchiffré le message. Passons à l'étape suivante.");
+            window.location.href = nextPage + ".html";
+        } else {
+            alert("Ce n'est pas encore ça... Essayez encore !");
+        }
+    }
+</script>
+
+</body>
+</html>
