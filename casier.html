@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="images/Sharingan.svg">
     <title>Déverrouiller le Cadenas</title>
     <style>
         body {
@@ -13,59 +14,113 @@
         }
         .container {
             margin-top: 50px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
         h1 {
             text-shadow: 0 0 10px #00ff00;
+            font-size: 2.5rem;
+            animation: glitch 1.5s infinite alternate;
         }
-        .sudoku {
+
+        /* Effet glitch sur le titre */
+        @keyframes glitch {
+            0% { text-shadow: 2px 2px red, -2px -2px blue; }
+            50% { text-shadow: -2px -2px red, 2px 2px blue; }
+            100% { text-shadow: 2px -2px blue, -2px 2px red; }
+        }
+
+        /* Effet "écriture progressive" */
+        .intro {
             display: inline-block;
-            border: 2px solid #00ff00;
-            padding: 10px;
-            margin: 20px auto;
+            white-space: pre-wrap;
+            overflow: hidden;
+            border-right: 2px solid #00ff00;
+            font-size: 1.4rem;
+            text-align: left;
+            margin-bottom: 20px;
+            animation: typing 4s steps(50) forwards, blink 0.8s infinite;
         }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(9, 40px);
-            gap: 2px;
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
         }
-        .cell {
-            width: 40px;
-            height: 40px;
-            text-align: center;
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        /* Style du bouton et du champ de saisie */
+        .input-container {
+            margin-top: 20px;
+        }
+        input {
+            background: black;
             border: 1px solid #00ff00;
-            font-size: 1.2rem;
-            background-color: black;
             color: #00ff00;
+            font-size: 1.2rem;
+            padding: 5px;
+            width: 150px;
+            text-align: center;
         }
-        .highlight {
-            background-color: rgba(0, 255, 0, 0.3);
+        .start-btn {
+            background: #00ff00;
+            color: black;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            border: none;
+            cursor: pointer;
+            margin-left: 10px;
+            font-weight: bold;
+            box-shadow: 0 0 10px #00ff00;
+            transition: 0.3s;
         }
+        .start-btn:hover {
+            background: #009900;
+            box-shadow: 0 0 20px #00ff00;
+        }
+
+        /* Image du Sudoku */
+        .img-container img {
+            width: 80%;
+            max-width: 400px;
+            margin-top: 20px;
+            border: 2px solid #00ff00;
+            box-shadow: 0 0 10px #00ff00;
+        }
+
     </style>
 </head>
 <body>
 <div class="container">
-    <h1 class="glitch">🔐 Déverrouiller le Cadenas 🔐</h1>
-    <p>Un cadenas protège le casier d'Emma...</p>
+    <h1>🔐 Déverrouiller le Cadenas 🔐</h1>
 
+    <p class="intro">Vous vous retrouvez devant le casier d'Emma, mais il est verrouillé par un cadenas à numéros.
+        4 chiffres... vous remarquez également un Sudoku collé sur la porte.
+        Simple coïncidence ou **indice caché** ?</p>
 
     <div class="img-container">
-        <img src="images/sudoku.png" alt="Image hacking"> <!-- À remplacer par ton image -->
+        <img src="images/sudoku.png" alt="Sudoku Casier"> <!-- Image du Sudoku -->
     </div>
 
-    <input type="text" id="code" placeholder="Entrez le code">
-    <button class="start-btn" onclick="checkCode()">Déverrouiller</button>
+    <div class="input-container">
+        <input type="text" id="code" placeholder="Entrez le code">
+        <button class="start-btn" onclick="checkCode()">Déverrouiller</button>
+    </div>
 </div>
 
 <script>
-        function checkCode() {
+    function checkCode() {
         let code = document.getElementById('code').value;
-        let validCode = atob("Nzc3NQ==");
+        let validCode = atob("Nzc3NQ=="); // "3456" en ascii 8R2D2
         if (code === validCode) {
-        alert("Cadenas déverrouillé !");
-        window.location.href = atob("Y2FzaWVyX2VtbWEuaHRtbA==");
-    } else {
-        alert("Code incorrect, essayez encore.");
-    }
+            alert("Cadenas déverrouillé !");
+            window.location.href = atob("Y2FzaWVyX2VtbWEuaHRtbA==");
+        } else {
+            alert("Code incorrect, essayez encore.");
+        }
     }
 </script>
 </body>
