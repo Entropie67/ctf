@@ -1,3 +1,0 @@
-RewriteEngine On
-RewriteCond %{HTTP_ACCEPT} image/webp
-RewriteRule .* - [E=WEBP_DISABLE:true]

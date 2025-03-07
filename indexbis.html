@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学无止境</title>
+    <link rel="icon" type="images/png" href="images/mak.png">
+    <style>
+        body {''
+            margin: 0;
+            overflow: hidden;
+            background: black;
+        }
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<!--
+              _________-----_____
+   _____------           __      ----_
+___----             ___------              \
+----________        ----                 \
+           -----__    |             _____)
+                __-                /     \
+    _______-----    ___--          \    /)\
+------_______      ---____            \__/  /
+           -----__    \ --    _          /\
+                  --__--__     \_____/   \_/\
+                          ----|   /          |
+                              |  |___________|
+                              |  | ((_(_)| )_)
+                              |  \_((_(_)|/(_)
+                              \             (
+                               \_____________)
+
+    💀【 Escape the Matrix 】💀
+
+    L’aventure commence ici… Un voyage entre code et réalité.
+    La difficulté est progressive, les énigmes variées.
+    Si tu lis ce message, c’est que tu as déjà franchi un premier obstacle.
+
+    Cette mission est inspirée de faits réels. Des individus, des noms,
+    des indices ont été dissimulés dans les lignes de code.
+    Certains regarderont sans voir. D’autres verront sans comprendre.
+
+    Observe, déchiffre, et surtout… n’oublie jamais :
+    **"La Matrice ne révèle ses secrets qu'à ceux qui savent où regarder."**
+Tu peux te rendre sur la page :  https://offuscation.eu/Partie_A.html
+    🟢 Bonne chance, hacker.
+-->
+<canvas id="matrix"></canvas>
+
+<script>
+    const canvas = document.getElementById("matrix");
+    const ctx = canvas.getContext("2d");
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    // Liste de caractères chinois aléatoires
+    const chars = "你是最棒的黑客秘密数据解码未来世界信息流光暗网科技终极代码";
+    const columns = canvas.width / 20;
+    const drops = Array(Math.floor(columns)).fill(1);
+
+    function drawMatrix() {
+        ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = "#00FF00"; // Vert Matrix
+        ctx.font = "20px monospace";
+
+        drops.forEach((y, i) => {
+            const text = chars[Math.floor(Math.random() * chars.length)];
+            const x = i * 20;
+
+            ctx.fillText(text, x, y * 20);
+
+            if (y * 20 > canvas.height && Math.random() > 0.975) {
+                drops[i] = 0;
+            }
+            drops[i]++;
+        });
+    }
+
+    setInterval(drawMatrix, 50);
+
+    window.addEventListener("resize", () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+</script>
+</body>
+</html>

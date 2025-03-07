@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="images/virus.png">
+    <title>Agent Compromis - CTF</title>
+    <style>
+        body {
+            background-color: black;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        h1 {
+            text-shadow: 0 0 10px #00ff00;
+        }
+        .glitch {
+            font-size: 2rem;
+            font-weight: bold;
+            animation: glitch 1s infinite;
+        }
+        @keyframes glitch {
+            0% { text-shadow: 2px 2px red, -2px -2px blue; }
+            50% { text-shadow: -2px -2px red, 2px 2px blue; }
+            100% { text-shadow: 2px -2px blue, -2px 2px red; }
+        }
+        .img-container img {
+            width: 60%;
+            border: 2px solid #00ff00;
+            box-shadow: 0 0 10px #00ff00;
+            margin-top: 20px;
+        }
+        .start-btn {
+            background: #00ff00;
+            color: black;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .start-btn:hover {
+            background: #009900;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 class="glitch">⚠ AGENT COMPROMIS ⚠</h1>
+    <p>Le Gymnase Jean Sturm, lycée d'excellence et pionnier en innovation pédagogique, attire les convoitises. Ses avancées en intelligence artificielle, cybersécurité et nouvelles technologies font de lui une cible prisée. Mais toutes les institutions ne jouent pas franc jeu… et certaines, parfois même  <em>"by the sea"</em>, n'hésitent pas à employer des méthodes douteuses pour s'approprier ses secrets.</p>
+
+    <p>Face à la menace, l'établissement met en place une cellule de <strong>contre-espionnage</strong>, dirigée par l'agent Theo, ancien des forces de cyberdéfense de l’ISN (<em>Instance de Sécurité Nationale</em>). Avec une poignée d'élèves triés sur le volet, il forme une <strong>unité d’élite</strong> pour contrer les infiltrations et protéger le savoir du Gymnase.</p>
+
+    <p>Mais aujourd’hui, une crise éclate. <strong>Un agent a été compromis.</strong></p>
+
+    <h2>Votre mission :</h2>
+
+    <p>L’agent <strong>Emma</strong>, alias <strong>Nova</strong>, l’un des piliers du renseignement interne, a disparu en mission. Son dernier message crypté laisse penser qu’elle a découvert un <strong>complot de grande ampleur</strong>. Mais avant qu’elle ne puisse révéler ce qu’elle a découvert, elle s’est volatilisée. <em>Trahison interne ? Capture ? Effacement numérique ?</em></p>
+
+    <p>L’agent Theo fait appel à vous. <strong>Votre objectif :</strong></p>
+
+    <ul>
+        <li>Retrouver Nova avant qu’il ne soit trop tard.</li>
+        <li>Déjouer la menace qui pèse sur le lycée.</li>
+        <li>Démasquer l’ennemi et neutraliser ses opérations.</li>
+    </ul>
+
+    <p><strong>Le temps presse.</strong> L’information est une arme, et l’ennemi est déjà à l’œuvre…</p>
+
+
+    <div class="img-container">
+        <img src="images/EMMA.jpeg" alt="Image hacking"> <!-- À remplacer par ton image -->
+    </div>
+    <button class="start-btn" onclick="startGame()" >Commencer l'Enquête</button>
+</div>
+
+<script>
+    function startGame() {
+        window.location.href = 'casier.html'; // Redirige vers la première épreuve
+    }
+</script>
+</body>
+</html>

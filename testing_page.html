@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="images/virus.png">
+    <title>Agent Compromis - CTF</title>
+
+    <!-- Importation police hacker -->
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: black;
+            color: #00ff00;
+            font-family: 'VT323', monospace; /* Police typée "hacker" */
+            text-align: center;
+            padding: 30px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+            border: 2px solid #00ff00;
+            box-shadow: 0 0 20px #00ff00;
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        h1 {
+            font-size: 3rem;
+            text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+            animation: flicker 1.5s infinite alternate;
+        }
+
+        /* Effet de glitch */
+        .glitch {
+            font-size: 2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            animation: glitch 1s infinite alternate;
+        }
+
+        /* Animation glitch */
+        @keyframes glitch {
+            0% { text-shadow: 2px 2px red, -2px -2px blue; }
+            50% { text-shadow: -2px -2px red, 2px 2px blue; }
+            100% { text-shadow: 2px -2px blue, -2px 2px red; }
+        }
+
+        /* Effet de clignotement */
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        /* Style des paragraphes */
+        p {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* Mise en avant de certains mots */
+        strong {
+            color: #00ff00;
+            text-shadow: 0 0 10px #00ff00;
+            font-size: 1.6rem;
+        }
+
+        /* Texte qui scanne */
+        .scan {
+            display: inline-block;
+            position: relative;
+            animation: scan 1.5s infinite alternate;
+        }
+
+        @keyframes scan {
+            0% { text-shadow: 0 0 5px #00ff00; }
+            100% { text-shadow: 0 0 20px #00ff00; }
+        }
+
+        /* Effet hacking sur l'image */
+        .img-container img {
+            width: 80%;
+            border: 2px solid #00ff00;
+            box-shadow: 0 0 10px #00ff00;
+            margin-top: 20px;
+            filter: brightness(120%) contrast(120%);
+        }
+
+        /* Bouton stylisé */
+        .start-btn {
+            background: #00ff00;
+            color: black;
+            padding: 15px 30px;
+            font-size: 1.5rem;
+            border: none;
+            cursor: pointer;
+            margin-top: 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            box-shadow: 0 0 10px #00ff00;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .start-btn:hover {
+            background: #009900;
+            box-shadow: 0 0 20px #00ff00;
+        }
+
+        /* Liste stylisée */
+        ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            display: inline-block;
+        }
+
+        li {
+            font-size: 1.4rem;
+            padding: 8px;
+            border-left: 4px solid #00ff00;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 class="glitch">⚠ AGENT COMPROMIS ⚠</h1>
+
+    <p>Le <span class="scan">Gymnase Jean Sturm</span>, lycée d'excellence et pionnier en innovation pédagogique, attire les convoitises.
+        Ses avancées en intelligence artificielle, cybersécurité et nouvelles technologies font de lui une <strong>cible stratégique</strong>.
+        Mais toutes les institutions ne jouent pas franc jeu… certaines, parfois même <em>"by the sea"</em>,
+        n'hésitent pas à employer des méthodes douteuses pour s'approprier ses secrets.</p>
+
+    <p>Face à la menace, l'établissement met en place une cellule de <strong>contre-espionnage</strong>,
+        dirigée par l'agent Theo, ancien des forces de cyberdéfense de l’ISN (<em>Instance de Sécurité Nationale</em>).
+        Avec une poignée d'élèves triés sur le volet, il forme une <strong>unité d’élite</strong> pour contrer les infiltrations.</p>
+
+    <p>Mais aujourd’hui, une crise éclate. <strong>Un agent a été compromis.</strong></p>
+
+    <h2>🕵️ Votre mission :</h2>
+
+    <p>L’agent <strong>Emma</strong>, alias <strong>Nova</strong>, l’un des piliers du renseignement interne, a disparu en mission.
+        Son dernier message crypté laisse penser qu’elle a découvert un <strong>complot de grande ampleur</strong>.
+        Mais avant qu’elle ne puisse révéler ce qu’elle a découvert, elle s’est volatilisée.
+        <em>Trahison interne ? Capture ? Effacement numérique ?</em></p>
+
+    <p>L’agent Theo fait appel à vous. <strong>Votre objectif :</strong></p>
+
+    <ul>
+        <li>🔎 Retrouver Nova avant qu’il ne soit trop tard.</li>
+        <li>⚠ Déjouer la menace qui pèse sur le lycée.</li>
+        <li>💻 Démasquer l’ennemi et neutraliser ses opérations.</li>
+    </ul>
+
+    <p><strong>Le temps presse.</strong> L’information est une arme, et l’ennemi est déjà à l’œuvre…</p>
+
+    <div class="img-container">
+        <img src="images/EMMA.jpeg" alt="Image hacking"> <!-- À remplacer par ton image -->
+    </div>
+
+    <button class="start-btn" onclick="startGame()">🚀 Commencer l'Enquête</button>
+</div>
+
+<script>
+    function startGame() {
+        window.location.href = 'casier.html'; // Redirige vers la première épreuve
+    }
+</script>
+
+</body>
+</html>
