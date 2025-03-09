@@ -4,19 +4,63 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Le Casier de ThibLowElo</title>
+
+  <!-- Importation d'une police style hacking -->
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="images/chess.png">
   <style>
     body {
       background-color: black;
       color: #00ff00;
-      font-family: 'Courier New', monospace;
+      font-family: 'VT323', monospace;
       text-align: center;
+      padding: 30px;
+      line-height: 1.6;
     }
+
     .container {
-      margin-top: 50px;
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+      border: 2px solid #00ff00;
+      box-shadow: 0 0 20px #00ff00;
+      background: rgba(0, 0, 0, 0.9);
     }
+
     h1 {
-      text-shadow: 0 0 10px #00ff00;
+      font-size: 3rem;
+      text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+      animation: flicker 1.5s infinite alternate;
     }
+
+    /* Effet de clignotement */
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.8; }
+    }
+
+    /* Texte qui s'affiche progressivement */
+    .intro {
+      display: inline-block;
+      white-space: pre-wrap;
+      overflow: hidden;
+      border-right: 2px solid #00ff00;
+      font-size: 1.4rem;
+      text-align: left;
+      margin-bottom: 20px;
+      animation: typing 3s steps(50) forwards, blink 0.8s infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    /* Zone indice */
     .clue-box {
       background: rgba(0, 255, 0, 0.1);
       border: 2px solid #00ff00;
@@ -24,55 +68,108 @@
       margin: 20px auto;
       width: 80%;
       text-align: center;
+      font-size: 1.3rem;
+      font-style: italic;
     }
+
+    /* Bouton et champ de réponse */
+    .input-container {
+      margin-top: 20px;
+    }
+
+    input {
+      background: black;
+      border: 1px solid #00ff00;
+      color: #00ff00;
+      font-size: 1.2rem;
+      padding: 5px;
+      width: 200px;
+      text-align: center;
+    }
+
     .start-btn {
       background: #00ff00;
       color: black;
-      padding: 10px 20px;
-      font-size: 1.2rem;
+      padding: 12px 24px;
+      font-size: 1.5rem;
       border: none;
       cursor: pointer;
       margin-top: 20px;
+      font-weight: bold;
+      text-transform: uppercase;
+      box-shadow: 0 0 10px #00ff00;
+      transition: all 0.3s ease-in-out;
     }
+
     .start-btn:hover {
       background: #009900;
+      box-shadow: 0 0 20px #00ff00;
+    }
+
+    /* Effet hacking sur l'image */
+    .img-container img {
+      width: 80%;
+      max-width: 400px;
+      margin-top: 20px;
+      border: 2px solid #00ff00;
+      box-shadow: 0 0 10px #00ff00;
     }
   </style>
 </head>
 <body>
+
 <div class="container">
-  <h1 class="glitch">🔐 Le Casier d'Thibault 🔐</h1>
-  <p>Le casier de Thibault… Quelle malice ! Vous reconnaissez bien là l'esprit espiègle d'Emma.
+  <h1>🔐 Le Casier de Thibault 🔐</h1>
+
+  <p class="intro">Le casier de Thibault… Quelle malice ! Vous reconnaissez bien là l'esprit espiègle d'Emma.
     Un sourire nostalgique effleure vos lèvres avant que vous ne chassiez l’émotion d’un battement de cils.
-    L’enquête doit continuer.</p>
+    **L’enquête doit continuer.**</p>
 
   <p>Encore un cadenas à code ! Mais cette fois, une particularité attire votre attention :
     ce modèle accepte à la fois des **chiffres et des lettres**. Intéressant…</p>
 
-
-  <div class="img-container">
-    <img src="images/mate.png" alt="Image hacking"> <!-- À remplacer par ton image -->
+  <div class="clue-box">
+    <p>Vous regardez les informations dont vous disposez au sujet de ce Thibault :</p>
+    <ul>
+      <li>♟️ Animateur du club d'échecs</li>
+      <li>🎭 Ambianceur et discriminant</li>
+    </ul>
   </div>
 
-  <p>Quatre caractères... Je me demande lesquels...</p>
-  <button class="start-btn" onclick="checkAnswer()">Entrer la solution</button>
-  <input type="text" id="answer" placeholder="Votre réponse">
+  <div class="img-container">
+    <img src="images/mate.png" alt="Indice"> <!-- À remplacer par ton image -->
+  </div>
+
+  <p>Quatre caractères... Mais lesquels ?</p>
+
+  <div class="input-container">
+    <input type="text" id="answer" placeholder="Votre réponse">
+    <button class="start-btn" onclick="checkAnswer()">Entrer la solution</button>
+  </div>
+
 </div>
 
 <script>
   function checkAnswer() {
-    let answer = document.getElementById('answer').value.toLowerCase().split('').sort().join('');
-    let validAnswer = ['8', '6', 'g', 'h'].sort().join(''); // "h6g8" mélangé
+    let answer = document.getElementById('answer').value.toLowerCase();
 
-    if (answer === validAnswer) {
+    // "h6g8" en ASCII × 2
+    let keyEnc = [104 * 2, 54 * 2, 103 * 2, 56 * 2];
+    let correctKey = keyEnc.map(n => String.fromCharCode(n / 2)).join('');
+
+    // "dans_casier" en ASCII × 3
+    let nextPageEnc = [300,291,330,345,285,297,291,345,315,303,342];
+    let nextPage = nextPageEnc.map(n => String.fromCharCode(n / 3)).join('') + ".html";
+
+    if (answer === correctKey) {
       alert("Bravo ! Vous avez déchiffré le message. Passons à l'étape suivante.");
-      window.location.href = ['d', 'a', 'n', 's', '_', 'c', 'a', 's', 'i', 'e', 'r'].join('') + ".html";
+      window.location.href = nextPage;
     } else {
       alert("Ce n'est pas encore ça... Essayez encore !");
     }
   }
-</script>
 
+</script>
 
 </body>
 </html>

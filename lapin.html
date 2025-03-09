@@ -3,93 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Le Casier d'Emma</title>
+    <title>❌ Mission Échouée ❌</title>
     <style>
         body {
             background-color: black;
-            color: #00ff00;
-            font-family: 'Courier New', monospace;
-            text-align: center;
+            margin: 0;
+            overflow: hidden;
         }
-        .container {
-            margin-top: 50px;
-        }
-        h1 {
-            text-shadow: 0 0 10px #00ff00;
-        }
-        .clue-box {
-            background: rgba(0, 255, 0, 0.1);
-            border: 2px solid #00ff00;
-            padding: 15px;
-            margin: 20px auto;
-            width: 80%;
-            text-align: center;
-        }
-        .code-box {
+
+        .matrix {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
             background: black;
+        }
+
+        canvas {
+            display: block;
+        }
+
+        .image-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .image-container img {
+            max-width: 80%;
+            height: auto;
+            box-shadow: 0 0 20px #00ff00;
             border: 2px solid #00ff00;
-            color: #00ff00;
-            padding: 15px;
-            margin: 20px auto;
-            width: 80%;
-            text-align: left;
-            font-family: 'Courier New', monospace;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-            box-shadow: 0 0 10px #00ff00;
-        }
-        .start-btn {
-            background: #00ff00;
-            color: black;
-            padding: 10px 20px;
-            font-size: 1.2rem;
-            border: none;
-            cursor: pointer;
-            margin-top: 20px;
-        }
-        .start-btn:hover {
-            background: #009900;
         }
     </style>
 </head>
 <body>
-
-<div class="container">
-    <h1>Déverrouille le casier</h1>
-    <div class="clue-box">
-        <p>Tu as trouvé un script étrange....</p>
-    </div>
-
-    <div class="code-box">
-    <pre>
-a = [71, 97, 109, 109, 97, 83, 116, 117, 114, 109]
-print("".join(chr(i) for i in a))
-    </pre>
-    </div>
-
-    <input type="text" id="answer" placeholder="Votre réponse" >
-    <button class="start-btn" onclick="checkAnswer()">Entrer la solution</button>
+<canvas class="matrix"></canvas>
+<div class="image-container">
+    <img src="images/perdu.webp" alt="Mission Échouée">
 </div>
 
 <script>
-    fetch('wang.php')
-        .then(response => response.text())
-        .then(data => {
-            let decodedData = atob(data);
-            eval(decodedData);
-        });
+    const canvas = document.querySelector(".matrix");
+    const ctx = canvas.getContext("2d");
 
-    function checkAnswer() {
-        let answer = document.getElementById('answer').value.toLowerCase();
-        if (answer === secretKey) {
-            alert(decodeURIComponent("%E6%98%8E%E6%98%8E%EF%BC%8C%E4%BD%A0%E5%BE%88%E8%83%BD%E5%86%B3%EF%BC%81"));
-            window.location.href = nextStep;
-        } else {
-            alert(decodeURIComponent("%E5%86%8D%E8%AF%95%E4%B8%80%E6%AC%A1%EF%BC%8C%E4%BD%A0%E4%BC%9A%E6%88%90%E5%8A%9F%E7%9A%84%EF%BC%81"));
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const letters = "日ﾊﾐﾋｰｱｺｻｼﾊﾋｶｲ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+    const fontSize = 16;
+    const columns = canvas.width / fontSize;
+    const drops = Array(Math.floor(columns)).fill(1);
+
+    function drawMatrix() {
+        ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#00ff00";
+        ctx.font = fontSize + "px monospace";
+
+        for (let i = 0; i < drops.length; i++) {
+            const text = letters[Math.floor(Math.random() * letters.length)];
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                drops[i] = 0;
+            }
+            drops[i]++;
         }
     }
+    setInterval(drawMatrix, 50);
+
+    window.addEventListener("resize", () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
 </script>
-
-
 </body>
 </html>

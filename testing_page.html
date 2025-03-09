@@ -3,106 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Le Casier d'Emma</title>
-
-    <!-- Importation d'une police stylée pour l'effet terminal -->
+    <title>🔐 Accès Restreint 🔐</title>
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-
     <style>
         body {
             background-color: black;
             color: #00ff00;
             font-family: 'VT323', monospace;
             text-align: center;
-            padding: 30px;
-            line-height: 1.6;
+            padding-top: 80px;
         }
 
         .container {
-            max-width: 900px;
+            max-width: 700px;
             margin: auto;
-            padding: 20px;
+            padding: 30px;
             border: 2px solid #00ff00;
-            box-shadow: 0 0 20px #00ff00;
-            background: rgba(0, 0, 0, 0.9);
+            box-shadow: 0 0 15px #00ff00;
+            background-color: rgba(0,0,0,0.9);
         }
 
         h1 {
             font-size: 3rem;
-            text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+            text-shadow: 0 0 20px #00ff00;
             animation: flicker 1.5s infinite alternate;
         }
 
-        /* Effet de clignotement sur le titre */
         @keyframes flicker {
             0%, 100% { opacity: 1; }
-            50% { opacity: 0.8; }
-        }
-
-        /* Effet scan lumineux */
-        .scan {
-            display: inline-block;
-            position: relative;
-            animation: scan 1.5s infinite alternate;
-        }
-
-        @keyframes scan {
-            0% { text-shadow: 0 0 5px #00ff00; }
-            100% { text-shadow: 0 0 20px #00ff00; }
-        }
-
-        /* Effet "écriture progressive" */
-        .intro {
-            display: inline-block;
-            white-space: pre-wrap;
-            overflow: hidden;
-            border-right: 2px solid #00ff00;
-            font-size: 1.4rem;
-            text-align: left;
-            margin-bottom: 20px;
-            animation: typing 4s steps(50) forwards, blink 0.8s infinite;
-        }
-
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-
-        @keyframes blink {
-            50% { border-color: transparent; }
-        }
-
-        /* Message chiffré dans un cadre stylé */
-        .clue-box {
-            background: rgba(0, 255, 0, 0.1);
-            border: 2px solid #00ff00;
-            padding: 15px;
-            margin: 20px auto;
-            width: 80%;
-            text-align: center;
-            font-size: 1.3rem;
-            letter-spacing: 1px;
-            font-style: italic;
-            filter: blur(1px);
-            transition: filter 0.5s ease-in-out;
-        }
-
-        .clue-box:hover {
-            filter: blur(0px);
-        }
-
-        /* Style du bouton et du champ de saisie */
-        .input-container {
-            margin-top: 20px;
+            50% { opacity: 0.7; }
         }
 
         input {
-            background: black;
-            border: 1px solid #00ff00;
+            background-color: black;
             color: #00ff00;
-            font-size: 1.2rem;
-            padding: 5px;
-            width: 200px;
+            border: 2px solid #00ff00;
+            padding: 10px;
+            font-size: 1.5rem;
+            margin-top: 20px;
             text-align: center;
         }
 
@@ -114,10 +52,8 @@
             border: none;
             cursor: pointer;
             margin-top: 20px;
-            font-weight: bold;
-            text-transform: uppercase;
             box-shadow: 0 0 10px #00ff00;
-            transition: all 0.3s ease-in-out;
+            transition: background 0.3s ease;
         }
 
         .start-btn:hover {
@@ -125,49 +61,36 @@
             box-shadow: 0 0 20px #00ff00;
         }
 
+        .intro {
+            font-size: 1.8rem;
+            margin-bottom: 40px;
+        }
     </style>
 </head>
 <body>
-
 <div class="container">
     <h1>🔐 Le Casier d'Emma 🔐</h1>
 
-    <p class="intro">Vous ouvrez le casier d'Emma...
-        À l'intérieur, des lutins de Noël, des goodies Ne Zha et...
-        Un message manifestement **chiffré**.</p>
-
-    <p>Vous ne touchez à rien, sachant qu'il faut **rendre à Emma ce qui lui appartient**.
-        Vous observez le message et tentez de le **déchiffrer**.</p>
-
-    <div class="clue-box">
-        <p><strong class="scan">📜 Message trouvé :</strong></p>
-        <p>Yo wakrwaat roz ik skyygmk ikyz ikxzgotksktz wak sky jkiuabkxzky kzgoktz lutjkky.
-            tuay tk inkxinuty vgy yosvrksktz at gmktz otlorzxk sgoy or ygmoz jatk bkxozghrk uxmgtoygzout.
-            yo buay kzky gxxobk paywak rg buay kzky vkaz kzxk jomtk jk vxktjxk rg yaozk jk rktwakzk.
-            rk vxuingot otjoik yk zxuabk jgty rg igyokx igsgxgjk jk irgyyk.
-            **Vuax e giikjkx pk t'go waatk inuyk g joxk roa roa roa !**</p>
-    </div>
-
-    <p>Un simple message ? Ou un **code** à décrypter ?</p>
+    <p class="intro">Vous vous retrouvez devant le casier d'Emma, verrouillé par un cadenas mystérieux.<br>
+        Un indice ? Le mot de passe semble lié à AlphaSturm...</p>
 
     <div class="input-container">
-        <input type="text" id="answer" placeholder="Votre réponse">
-        <button class="start-btn" onclick="checkAnswer()">Entrer la solution</button>
+        <input type="text" id="answer" placeholder="Entrez votre réponse ici">
+        <button class="start-btn" onclick="checkAnswer()">Déverrouiller</button>
     </div>
-
 </div>
 
 <script>
     function checkAnswer() {
-        let answer = document.getElementById('answer').value.toLowerCase();
-        let validAnswer = atob("NjY2"); // Réponse encodée en Base64
-        let nextPage = atob("Y2FzaWVyX3RoaUxvd0Vsbw=="); // Page suivante encodée
+        let answer = document.getElementById('answer').value;
+        let validAnswer = atob("QWxwaGFTdHVybQ=="); // "AlphaSturm"
+        let nextPage = atob("YWdlbnQuaHRtbA=="); // "agent.html"
 
         if (answer === validAnswer) {
-            alert("Bravo ! Vous avez déchiffré le message. Passons à l'étape suivante.");
-            window.location.href = nextPage + ".html";
+            alert("Bravo ! Vous avez ouvert le cadenas. Passons à l'étape suivante.");
+            window.location.href = nextPage;
         } else {
-            alert("Ce n'est pas encore ça... Essayez encore !");
+            alert("Ce n'est pas la bonne réponse, réessayez.");
         }
     }
 </script>
