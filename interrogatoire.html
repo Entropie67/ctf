@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🕵️ Interrogatoire de l'Agent Gamma 🕵️</title>
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: black;
+      color: #00ff00;
+      font-family: 'VT323', monospace;
+      text-align: center;
+      padding-top: 50px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+      border: 2px solid #00ff00;
+      box-shadow: 0 0 15px #00ff00;
+      background-color: rgba(0,0,0,0.9);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      text-shadow: 0 0 20px #00ff00;
+    }
+
+    .agent-image {
+      width: 300px;
+      height: auto;
+      border: 2px solid #00ff00;
+      box-shadow: 0 0 10px #00ff00;
+      margin-bottom: 20px;
+    }
+
+    input {
+      background-color: black;
+      color: #00ff00;
+      border: 2px solid #00ff00;
+      padding: 10px;
+      font-size: 1.5rem;
+      width: 80%;
+      text-align: center;
+    }
+
+    .ask-btn {
+      background: #00ff00;
+      color: black;
+      padding: 12px 24px;
+      font-size: 1.5rem;
+      border: none;
+      cursor: pointer;
+      margin-top: 20px;
+      box-shadow: 0 0 10px #00ff00;
+      transition: background 0.3s ease;
+    }
+
+    .ask-btn:hover {
+      background: #009900;
+      box-shadow: 0 0 20px #00ff00;
+    }
+
+    #response {
+      font-size: 1.5rem;
+      margin-top: 20px;
+      min-height: 50px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>🕵️ Interrogatoire de l'Agent Gamma 🕵️</h1>
+  <img src="agent_gamma.jpg" alt="Agent Gamma" class="agent-image"> <!-- Remplace par la vraie image -->
+  <p>L'agent Gamma est entre vos mains. Il ne se laissera pas faire facilement...<br>
+    Posez vos questions avec prudence.</p>
+  <p><strong>Interrogez-le ici :</strong> <a href="TON-LIEN-GPT" target="_blank">🔥 Accéder à l'interrogatoire 🔥</a></p>
+</div>
+<script>
+  async function askAgent() {
+    let question = document.getElementById("question").value;
+    if (!question) {
+      document.getElementById("response").innerText = "Gamma lève un sourcil. Pose une vraie question...";
+      return;
+    }
+
+    let response = await fetch("interrogatoire.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ question: question })
+    });
+
+    let data = await response.json();
+    document.getElementById("response").innerText = data.choices[0].message.content;
+  }
+</script>
+</body>
+</html>

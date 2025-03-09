@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rickroll Matrix</title>
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: black;
+      color: #00ff00;
+      font-family: 'VT323', monospace;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .matrix-container {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .matrix-text {
+      font-size: 2rem;
+      text-shadow: 0 0 10px #00ff00;
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      animation: scrollText 10s linear infinite;
+    }
+
+    @keyframes scrollText {
+      0% { transform: translateY(100vh); }
+      100% { transform: translateY(-100%); }
+    }
+  </style>
+</head>
+
+<body>
+<div class="matrix-container">
+  <div class="matrix-text" id="lyrics"></div>
+</div>
+<!-- Tu t'es tellement fait brain "Awkward turtle"->
+<script>
+  const lyrics = `We’re no strangers to love\n
+You know the rules and so do I\n
+A full commitment’s what I’m thinking of\n
+You wouldn’t get this from any other guy\n\n
+I just wanna tell you how I’m feeling\n
+Gotta make you understand\n\n
+Never gonna give you up\n
+Never gonna let you down\n
+Never gonna run around and desert you\n
+Never gonna make you cry\n
+Never gonna say goodbye\n
+Never gonna tell a lie and hurt you\n\n
+We’ve known each other for so long\n
+Your heart’s been aching but you’re too shy to say it\n
+Inside we both know what’s been going on\n
+We know the game and we’re gonna play it\n\n
+And if you ask me how I’m feeling\n
+Don’t tell me you’re too blind to see\n\n
+Never gonna give you up\n
+Never gonna let you down\n
+Never gonna run around and desert you\n
+Never gonna make you cry\n
+Never gonna say goodbye\n
+Never gonna tell a lie and hurt you`;
+
+  document.getElementById("lyrics").innerText = lyrics;
+</script>
+<audio autoplay loop>
+  <source src="nevergiveup.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+</body>
+</html>
