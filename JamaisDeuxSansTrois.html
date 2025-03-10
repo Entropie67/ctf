@@ -1,10 +1,103 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔒 Défi du Flag 🔒</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: black;
+            color: #00ff00;
+            font-family: 'VT323', monospace;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .container {
+            margin-top: 100px;
+            padding: 20px;
+            border: 2px solid #00ff00;
+            box-shadow: 0 0 20px #00ff00;
+            display: inline-block;
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        h1 {
+            text-shadow: 0 0 10px #00ff00;
+            font-size: 2rem;
+        }
+
+        input {
+            background-color: black;
+            color: #00ff00;
+            border: 2px solid #00ff00;
+            padding: 10px;
+            font-size: 1.5rem;
+            text-align: center;
+            width: 200px;
+        }
+
+        button {
+            background: #00ff00;
+            color: black;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            box-shadow: 0 0 10px #00ff00;
+        }
+
+        button:hover {
+            background: #009900;
+        }
+
+        .matrix-text {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            font-size: 1.2rem;
+            white-space: nowrap;
+            overflow: hidden;
+            color: rgba(0, 255, 0, 0.7);
+            text-shadow: 0 0 10px #00ff00;
+            animation: scrollText 10s linear infinite;
+        }
+
+        @keyframes scrollText {
+            0% { transform: translateY(100vh); }
+            100% { transform: translateY(-100%); }
+        }
+    </style>
 </head>
 <body>
+<div class="matrix-text">SYSTEM SECURITY CHECK... AUTHENTICATION REQUIRED...</div>
+<div class="container">
+    <h1>🔒 Validation du Flag 🔒</h1>
+    <p>Petit test de détermination</p>
+    <input type="text" id="flagInput" placeholder="Entre le flag ici">
+    <button onclick="checkFlag()">Valider</button>
+</div>
 
+<script>
+    let attemptCount = 0;
+    const correctFlag = "LiuShiShi❤︎";
+
+    function checkFlag() {
+        let userInput = document.getElementById("flagInput").value;
+        if (userInput === correctFlag) {
+            attemptCount++;
+            if (attemptCount === 3) {
+                alert("Bravo ! Accès débloqué.");
+                window.location.href = "next_page.html"; // Modifier avec la vraie page cible
+            } else {
+                alert(`essaie encore !`);
+            }
+        } else {
+            alert("Mauvais flag, essaie encore !");
+        }
+    }
+</script>
 </body>
 </html>

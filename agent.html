@@ -3,106 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🕵️ Sélection de l'Agent 🕵️</title>
-    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <title>一个中国故事</title>
     <style>
         body {
             background-color: black;
             color: #00ff00;
-            font-family: 'VT323', monospace;
+            font-family: 'Courier New', monospace;
             text-align: center;
-            padding-top: 50px;
         }
-
         .container {
-            max-width: 900px;
-            margin: auto;
-            padding: 20px;
-            border: 2px solid #00ff00;
-            box-shadow: 0 0 15px #00ff00;
-            background-color: rgba(0,0,0,0.9);
+            margin-top: 50px;
         }
-
         h1 {
-            font-size: 2.5rem;
-            text-shadow: 0 0 20px #00ff00;
-        }
-
-        .download {
-            margin: 20px 0;
-        }
-
-        .suspect-container {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-
-        .suspect {
-            width: 200px;
-            border: 2px solid #00ff00;
-            box-shadow: 0 0 10px #00ff00;
-            margin: 10px;
-            cursor: pointer;
-        }
-
-        .suspect img {
-            width: 100%;
-            height: auto;
-        }
-
-        .suspect p {
-            font-size: 1.5rem;
-            margin: 10px 0;
-        }
-
-        .download-link {
-            font-size: 1.8rem;
-            color: #00ff00;
-            text-decoration: none;
-            display: block;
-            margin-top: 20px;
-        }
-
-        .download-link:hover {
             text-shadow: 0 0 10px #00ff00;
+        }
+        .clue-box {
+            background: rgba(0, 255, 0, 0.1);
+            border: 2px solid #00ff00;
+            padding: 15px;
+            margin: 20px auto;
+            width: 80%;
+            text-align: center;
+        }
+        .start-btn {
+            background: #00ff00;
+            color: black;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .start-btn:hover {
+            background: #009900;
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <h1>🕵️ Sélection de l'Agent Suspect 🕵️</h1>
-    <p>Il est temps que tu découvres la vérité...</p>
-    <p>Emma n'a jamais disparu. En réalité, elle profite d'un Bubble Tea chez Signal en toute tranquillité. Ce test n'était qu'une mise à l'épreuve orchestrée par Rayan, alias "L'Expert".</p>
-    <p>Son objectif ? Identifier les esprits les plus aiguisés, capables de repérer l’agent infiltré. Car oui, un de nos propres agents a basculé de l'autre côté.</p>
-    <p>Nous avons retrouvé des copies des évaluations de M. A. entre les mains d’élèves d’autres établissements. Une trahison silencieuse, une fuite d’informations.</p>
-    <p>À toi maintenant d’exploiter les données extraites d’une clé USB oubliée par le traître.</p>
 
-    <p class="download">Téléchargez les données de l'enquête :</p>
-    <a href="data.zip" class="download-link" download>📂 Télécharger data.zip</a>
+    <p id="hint" oncopy="modifyClipboard(event)">
+        我要告诉你真相。其实，我发现一位老师是个卧底。她和一群学生一起监视我们的做法。我们必须告诉他，他可以帮我们。你知道我说的是谁……他一点都没发现，他总是想着王楚然和刘诗诗，却看不到叛徒就在他面前。要进入下一页，你可以用“<span id="target-word">美女</span>”作为密码。
+    </p>
 
-    <p>Tu peux également cliquer sur les dossiers des principaux suspects pour en savoir davantage.</p>
-    <div class="suspect-container">
-        <div class="suspect" onclick="selectSuspect(1)">
-            <img src="images/Madis.webp" alt="Le Juge">
-            <p>"Le juge"</p>
-        </div>
-        <div class="suspect" onclick="selectSuspect(2)">
-            <img src="images/loundidi.webp" alt="Loundi">
-            <p>"Loundi"</p>
-        </div>
-        <div class="suspect" onclick="selectSuspect(3)">
-            <img src="images/leo.webp" alt="Leo">
-            <p>"Léo"</p>
-        </div>
-    </div>
+
+    <button class="start-btn" onclick="checkAnswer()">Entrer la solution</button>
+    <input type="text" id="answer" placeholder="Votre réponse">
 </div>
 
 <script>
-    function selectSuspect(id) {
-        alert("Vous avez sélectionné le Suspect " + id + ". Poursuivez votre enquête...");
+    function modifyClipboard(event) {
+        event.preventDefault(); // Bloque l'action normale de copie
+
+        // Récupère le texte sélectionné
+        let selectedText = window.getSelection().toString().trim();
+
+        let fakeText;
+
+        if (selectedText === "美女") {
+            fakeText = "绿茶"; // Si l'utilisateur copie seulement 美女, il obtient 绿茶
+        } else {
+            fakeText = "我要骗你。其实，我发现一位老师是个卧底。她和一群学生一起监视我们的做法。我们必须告诉他，他可以帮我们。你知道我说的是谁……他一点都没发现，他总是想着王楚然和刘诗诗，却看不到叛徒就在他面前。要进入下一页，你可以用“绿茶”作为密码。";
+        }
+
+        if (event.clipboardData) {
+            event.clipboardData.setData("text/plain", fakeText);
+        } else if (window.clipboardData) {
+            window.clipboardData.setData("Text", fakeText);
+        }
+
+        //alert("Texte copié dans le presse-papier !");
     }
+
+
+    function checkAnswer() {
+        let answer = document.getElementById('answer').value.trim();
+
+        // Cacher "美女" en Unicode hexadécimal
+        let validAnswer = String.fromCharCode(0x7F8E, 0x5973);
+
+        // Offusquer les URLs avec Base64
+        let nextPage = atob("SmFtYWlzRGV1eFNhbnNUcm9pcy=="); // "lapin" encodé en Base64
+        let loosePage = atob("dnJhaW1lbnQ="); // "jamaistroissansdeux" encodé en Base64
+
+        console.log("User Input (JSON):", JSON.stringify(answer));
+        console.log("Valid Answer (JSON):", JSON.stringify(validAnswer));
+        console.log("Next Page (JSON):", JSON.stringify(nextPage));
+        console.log("Loose Page (JSON):", JSON.stringify(loosePage));
+
+        if (answer.normalize() === validAnswer.normalize()) {
+            alert("Bravo ! Vous avez déchiffré le message. Passons à l’étape suivante.");
+            window.location.href = nextPage + ".html";
+        } else {
+            window.location.href = loosePage + ".html";
+        }
+    }
+
+
+
+
+
 </script>
+
 </body>
 </html>
