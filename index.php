@@ -63,7 +63,7 @@ if ($current_time >= $activation_time) {
     canvas.height = window.innerHeight;
     canvas.width = window.innerWidth;
 
-    const chinese = "田由甲申电甫男甸甩画界".split("");
+    const chinese = "王楚然刘诗诗杨幂张嘉倪宋轶吴谨言黄灿灿赵露思唐嫣".split("");
     const font_size = 16;
     const columns = canvas.width / font_size;
     const drops = [];

@@ -160,8 +160,8 @@
 <script>
     function checkAnswer() {
         let answer = document.getElementById('answer').value.toLowerCase();
-        let validAnswer = atob("NjY2"); // Réponse encodée en Base64
-        let nextPage = atob("Y2FzaWVyX3RoaUxvd0Vsbw=="); // Page suivante encodée
+        let validAnswer = atob("NjY2"); // Réponse en clair :/
+        let nextPage = atob("Y2FzaWVyX3RoaUxvd0Vsbw=="); // lapin
 
         if (answer === validAnswer) {
             alert("Bravo ! Vous avez déchiffré le message. Passons à l'étape suivante.");

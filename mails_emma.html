@@ -338,6 +338,7 @@
   }
   function checkAnswer() {
     let password = document.getElementById('answer').value.trim();
+// faux fichier php qui n'existe pas, pour faire croire à une vérification côté serveur.
 
     fetch("verify.php", {
       method: "POST",
@@ -354,7 +355,15 @@
               }
             });
   }
-
+  /*
+    ──────────────────────────────────────────────
+    Tu vois ?
+    Si ED était en UTF-8…
+    ➤ Tu aurais pu faire un simple copié-collé.
+    Mais non… ✂️
+    Welcome back to the ASCII Dark Ages.
+    ──────────────────────────────────────────────
+  */
 </script>
 </body>
 </html>

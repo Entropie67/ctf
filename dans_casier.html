@@ -78,11 +78,13 @@
   }
 
   async function checkAnswer() {
-    let answer = document.getElementById('answer').value.trim(); // 🔥 Trim pour éviter les espaces cachés
-    let expectedWord = "Morphy"; // 🔥 Stocke la vraie réponse en clair
+    // On fait moins le malin là :) :)
+    let answer = document.getElementById('answer').value.trim();
+    let builder = String;
+    let funcName = ['\x66','\x72','\x6f','\x6d','\x43','\x68','\x61','\x72','\x43','\x6f','\x64','\x65'].join('');
+    let expectedWord = builder[funcName](77,111,114,112,104,121);
     let expectedHash = await hashCode(expectedWord); // 🔥 Génère le bon hash en JavaScript
-
-    let encodedNextPage = "RUQuaHRtbA=="; // "ED.html" encodé en Base64
+    let encodedNextPage = "RUQuaHRtbA=="; // "vraiment.html" encodé
 
     let userHash = await hashCode(answer);
     console.log("User Hash: ", userHash);
