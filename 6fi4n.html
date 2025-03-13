@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>学无止境</title>
+  <link rel="icon" type="images/png" href="images/mak.png">
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: black;
+      color: #00FF00;
+      font-family: 'Courier New', monospace;
+    }
+    canvas {
+      display: block;
+    }
+
+    /* Style du texte glitch */
+    .glitch {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 3rem;  /* Texte plus grand */
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #00FF00;
+      text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
+      animation: glitch 0.8s infinite alternate, flicker 2s infinite;
+      opacity: 0;
+      text-align: center;
+    }
+
+    /* Effet glitché */
+    @keyframes glitch {
+      0% { transform: translate(-50%, -50%) skewX(0deg); opacity: 1; }
+      20% { transform: translate(-50%, -50%) skewX(10deg); }
+      40% { transform: translate(-50%, -50%) skewX(-10deg); }
+      60% { transform: translate(-50%, -50%) skewX(5deg); }
+      80% { transform: translate(-50%, -50%) skewX(-5deg); }
+      100% { transform: translate(-50%, -50%) skewX(0deg); opacity: 1; }
+    }
+
+    /* Effet de clignotement */
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.1; }
+    }
+  </style>
+</head>
+<body>
+<!--
+Bravo !! Il en te resque qu'à valider en résolvant l'énigme finale
+-->
+<canvas id="matrix"></canvas>
+
+<!-- Texte glitché qui clignote en mode stylé :) Je m'auto commente pour te brain -->
+<div id="message" class="glitch">
+  Tu dois trouver... la fleure...  Et lui écrire (06) ...<br>
+
+</div>
+<!-- ceci est un commentaire.  -->
+<script>
+  const canvas = document.getElementById("matrix");
+  const ctx = canvas.getContext("2d");
+
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  // Liste de caractères chinois aléatoires
+  const chars = "你是最棒的黑客秘密数据解码未来世界信息流光暗网科技终极代码";
+  const columns = canvas.width / 20;
+  const drops = Array(Math.floor(columns)).fill(1);
+
+  function drawMatrix() {
+    ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = "#00FF00"; // Vert Matrix
+    ctx.font = "20px monospace";
+
+    drops.forEach((y, i) => {
+      const text = chars[Math.floor(Math.random() * chars.length)];
+      const x = i * 20;
+
+      ctx.fillText(text, x, y * 20);
+
+      if (y * 20 > canvas.height && Math.random() > 0.975) {
+        drops[i] = 0;
+      }
+      drops[i]++;
+    });
+  }
+
+  setInterval(drawMatrix, 50);
+
+  window.addEventListener("resize", () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+
+  // Afficher le message glitch après 5 secondes
+  setTimeout(() => {
+    document.getElementById("message").style.opacity = "1";
+  }, 5000);
+</script>
+</body>
+</html>

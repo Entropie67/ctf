@@ -15,7 +15,7 @@
     }
 
     .container {
-      max-width: 800px;
+      max-width: 900px;
       margin: auto;
       padding: 20px;
       border: 2px solid #00ff00;
@@ -28,74 +28,98 @@
       text-shadow: 0 0 20px #00ff00;
     }
 
-    .agent-image {
-      width: 300px;
-      height: auto;
-      border: 2px solid #00ff00;
-      box-shadow: 0 0 10px #00ff00;
-      margin-bottom: 20px;
+    .agent-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
     }
 
-    input {
-      background-color: black;
-      color: #00ff00;
+    .agent-box {
       border: 2px solid #00ff00;
       padding: 10px;
-      font-size: 1.5rem;
-      width: 80%;
-      text-align: center;
-    }
-
-    .ask-btn {
-      background: #00ff00;
-      color: black;
-      padding: 12px 24px;
-      font-size: 1.5rem;
-      border: none;
-      cursor: pointer;
-      margin-top: 20px;
       box-shadow: 0 0 10px #00ff00;
-      transition: background 0.3s ease;
+      background-color: rgba(0, 0, 0, 0.8);
+      transition: transform 0.3s ease;
     }
 
-    .ask-btn:hover {
-      background: #009900;
-      box-shadow: 0 0 20px #00ff00;
+    .agent-box:hover {
+      transform: scale(1.05);
     }
 
-    #response {
-      font-size: 1.5rem;
-      margin-top: 20px;
-      min-height: 50px;
+    .agent-box img {
+      width: 100%;
+      height: auto;
+      border: 1px solid #00ff00;
+      margin-bottom: 10px;
+    }
+
+    .agent-box a {
+      color: #00ff00;
+      text-decoration: none;
+      font-size: 1.2rem;
+    }
+
+    .agent-box a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
 <div class="container">
-  <h1>🕵️ Interrogatoire de l'Agent Gamma 🕵️</h1>
-  <img src="agent_gamma.jpg" alt="Agent Gamma" class="agent-image"> <!-- Remplace par la vraie image -->
-  <p>L'agent Gamma est entre vos mains. Il ne se laissera pas faire facilement...<br>
-    Posez vos questions avec prudence.</p>
-  <p><strong>Interrogez-le ici :</strong> <a href="https://chatgpt.com/g/g-67cd6704a4908191b0e754f3a7c4acc3-agent-gamma" target="_blank">🔥 Accéder à l'interrogatoire 🔥</a></p>
+  <h1>🕵️ Interrogatoires croisés - Phase finale 🕵️</h1>
+  <p>Le rideau tombe. L'ombre se resserre. L'information est quelque part… dissimulée dans un souffle, une hésitation, un mot trop prononcé.</p>
+  <p>Quatre agents. Quatre profils. Quatre vérités fragmentées. Tous ont quelque chose à cacher… mais seul l’un d’eux détient la clef finale.</p>
+  <p><strong>Votre mission :</strong> interroger chaque agent, percer leurs failles, déceler le mensonge sous le vernis. Leur façade est parfaite, mais leurs mots trahissent ce qu’ils ne veulent pas dire.</p>
+
+  <div class="agent-grid">
+    <div class="agent-box">
+      <img src="images/GAMMA.webp" alt="Agent Gamma, elle sait comment passer à la page suivante">
+      <a href="https://chatgpt.com/g/g-67cd6704a4908191b0e754f3a7c4acc3-agent-gamma" target="_blank">Interroger l'Agent Gamma</a>
+    </div>
+    <div class="agent-box">
+      <img src="images/ALPHA.webp" alt="Agent Alpha, elle sait qui il faut trouver.">
+      <a href="https://chatgpt.com/g/g-67d02dac8b688191a9a7e26b60b21dfd-agent-alpha" target="_blank">Interroger l'Agent Alpha</a>
+    </div>
+    <div class="agent-box">
+      <img src="images/DELTA.webp" alt="Agent Delta, de nombreux secrets.">
+      <a href="https://chatgpt.com/g/g-67cec17b1ac88191aa7386988b44fdc8-agent-delta" target="_blank">Interroger l'Agent Delta</a>
+    </div>
+    <div class="agent-box">
+      <img src="images/AGENCE.webp" alt="L'agence, elle connait beaucoup de choses.">
+      <a href="https://chatgpt.com/g/g-67d11f60b8b881919571b0f79907cd20-l-agence" target="_blank">Interroger l'Agent Mad</a>
+    </div>
+  </div>
 </div>
-<elevenlabs-convai agent-id="VoZYccDJaVRvQX28b4yz"></elevenlabs-convai><script src="https://elevenlabs.io/convai-widget/index.js" async type="text/javascript"></script>
+<div>
+  <!-- flemme de csser la div -->
+  <p>Le code </p>
+  <button class="start-btn" onclick="checkAnswer()">Entrer la solution</button>
+  <input type="text" id="answer" placeholder="Votre réponse">
+</div>
+<elevenlabs-convai agent-id="VoZYccDJaVRvQX28b4yz"></elevenlabs-convai>
+<script src="https://elevenlabs.io/convai-widget/index.js" async type="text/javascript"></script>
 <script>
-  async function askAgent() {
-    let question = document.getElementById("question").value;
-    if (!question) {
-      document.getElementById("response").innerText = "Gamma lève un sourcil. Pose une vraie question...";
-      return;
-    }
+  function checkAnswer() {
+    let password = document.getElementById('answer').value.trim();
 
-    let response = await fetch("interrogatoire.php", {
+    fetch("interrogatoire.php", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ question: question })
-    });
-
-    let data = await response.json();
-    document.getElementById("response").innerText = data.choices[0].message.content;
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: "password=" + encodeURIComponent(password)
+    }) // J'espère que Maxime rentre le vieux code
+            .then(response => response.json())
+            .then(data => {
+              if (data.status === "success") {
+                alert("Connexion réussie !");
+                window.location.href = data.redirect;
+              } else {
+                alert(data.message);
+              }
+            });
   }
+
 </script>
+
 </body>
 </html>
