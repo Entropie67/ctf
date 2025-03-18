@@ -1,6 +1,6 @@
 <?php
 // Date/heure d'activation (format : YYYY-MM-DD HH:MM:SS)
-$activation_time = strtotime("2025-03-15 14:00:00");
+$activation_time = strtotime("2025-03-21 18:00:00");
 $current_time = time();
 
 if ($current_time >= $activation_time) {
@@ -52,17 +52,19 @@ if ($current_time >= $activation_time) {
 <body>
   <canvas id="matrix"></canvas>
   <div class="message">
+    <!-- maxLaMenace.png -->
     <h1>CTF VERROUILLÉ</h1>
-    <p>Le portail ne s'ouvrira qu'à <strong>14h00</strong>... Patience, hacker.</p>
+    <p>Le portail ne s'ouvrira qu'à <strong>18h00 le 21/03/2025</strong>... Patience, mon jeune Padawan .</p>
   </div>
-
+    <!-- Il n'y a rien à voir dans le code là ! On circule !   -->
+    <!-- Maxime, va plutôt travailler sur le projet IA stp, je te dirai quand ça commence.  -->
   <script>
     const canvas = document.getElementById("matrix");
     const ctx = canvas.getContext("2d");
-
+    /* https://civitai.com/images/781191 */
     canvas.height = window.innerHeight;
     canvas.width = window.innerWidth;
-
+    /* Ces caractère chinois ne veulent rien dire, c'est de l'aléatoire made in ChatGPT */
     const chinese = "王楚然刘诗诗杨幂张嘉倪宋轶吴谨言黄灿灿赵露思唐嫣".split("");
     const font_size = 16;
     const columns = canvas.width / font_size;
@@ -83,11 +85,11 @@ if ($current_time >= $activation_time) {
 
         if (drops[i] * font_size > canvas.height && Math.random() > 0.975)
           drops[i] = 0;
-
+        /*    */
         drops[i]++;
       }
     }
-
+    /* https://www.youtube.com/watch?v=dOF9vc5tLJ4 */
     setInterval(draw, 33);
   </script>
 </body>
