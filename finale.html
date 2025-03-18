@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🕵️ Sélection de l'Agent 🕵️</title>
+  <link rel="icon" type="images/png" href="images/fav1.ico">
+  <title>🕵️‍♂️ Accès Sécurisé - Dossier Agent</title>
   <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
   <style>
     body {
@@ -12,6 +13,7 @@
       font-family: 'VT323', monospace;
       text-align: center;
       padding-top: 50px;
+      overflow-x: hidden;
     }
 
     .container {
@@ -20,41 +22,40 @@
       padding: 20px;
       border: 2px solid #00ff00;
       box-shadow: 0 0 15px #00ff00;
-      background-color: rgba(0,0,0,0.9);
+      background-color: rgba(0, 0, 0, 0.9);
+      position: relative;
+      animation: flickerBorder 1.5s infinite alternate;
+    }
+
+    @keyframes flickerBorder {
+      0% { box-shadow: 0 0 10px #00ff00; }
+      100% { box-shadow: 0 0 25px #00ff00, 0 0 5px #00ff00 inset; }
     }
 
     h1 {
       font-size: 2.5rem;
-      text-shadow: 0 0 20px #00ff00;
+      text-shadow: 0 0 15px #00ff00, 0 0 3px #00ff00;
+      animation: glitchText 2s infinite;
     }
 
-    .download {
-      margin: 20px 0;
+    @keyframes glitchText {
+      0%, 100% { text-shadow: 0 0 5px #00ff00; }
+      50% { text-shadow: 2px 0 red, -2px 0 blue; }
     }
 
-    .suspect-container {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      margin-top: 20px;
+    .glitch {
+      font-size: 1.2rem;
+      opacity: 0.6;
+      animation: flicker 1s infinite;
     }
 
-    .suspect {
-      width: 200px;
-      border: 2px solid #00ff00;
-      box-shadow: 0 0 10px #00ff00;
-      margin: 10px;
-      cursor: pointer;
-    }
-
-    .suspect img {
-      width: 100%;
-      height: auto;
-    }
-
-    .suspect p {
-      font-size: 1.5rem;
-      margin: 10px 0;
+    @keyframes flicker {
+      0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        opacity: 0.6;
+      }
+      20%, 24%, 55% {
+        opacity: 0.1;
+      }
     }
 
     .download-link {
@@ -63,45 +64,98 @@
       text-decoration: none;
       display: block;
       margin-top: 20px;
+      transition: transform 0.3s ease;
     }
 
     .download-link:hover {
       text-shadow: 0 0 10px #00ff00;
+      transform: scale(1.1);
+    }
+
+    .input-zone {
+      margin-top: 30px;
+    }
+
+    .input-zone input, .input-zone button {
+      font-size: 1.5rem;
+      padding: 10px;
+      border: none;
+      box-shadow: 0 0 10px #00ff00;
+      background-color: black;
+      color: #00ff00;
+      font-family: 'VT323', monospace;
+    }
+
+    .input-zone input {
+      width: 250px;
+      margin-right: 10px;
+    }
+
+    .input-zone button {
+      cursor: pointer;
+    }
+
+    .input-zone button:hover {
+      background-color: #003300;
+    }
+
+    .data-leak {
+      font-size: 0.9rem;
+      color: red;
+      margin-top: 10px;
+      animation: dataLeak 2s linear infinite;
+    }
+
+    @keyframes dataLeak {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
     }
   </style>
 </head>
 <body>
 <div class="container">
-  <h1>🕵️ Sélection de l'Agent Suspect 🕵️</h1>
+  <h1>🕵️ Data Extraction - PRISM like 🕵️</h1>
   <p>Il est temps que tu découvres la vérité...</p>
-  <p>Emma n'a jamais disparu. En réalité, elle profite d'un Bubble Tea chez Signal en toute tranquillité. Ce test n'était qu'une mise à l'épreuve orchestrée par Rayan, alias "L'Expert".</p>
-  <p>Son objectif ? Identifier les esprits les plus aiguisés, capables de repérer l’agent infiltré. Car oui, un de nos propres agents a basculé de l'autre côté.</p>
-  <p>Nous avons retrouvé des copies des évaluations de M. A. entre les mains d’élèves d’autres établissements. Une trahison silencieuse, une fuite d’informations.</p>
-  <p>À toi maintenant d’exploiter les données extraites d’une clé USB oubliée par le traître.</p>
+  <p class="glitch">[ SYSTEME DE CONTROLE DE L'ACCES - SIGMA LEVEL ]</p>
+  <p>Nous avons intercepté une tentative de fuite d'informations sensibles. Une clé USB contenant un fichier appelé <strong>data.zip</strong> a été retrouvée.</p>
+  <p>Cet objet était dissimulé à l'intérieur d'un Rubik's Cube dans les affaires d'un agent suspect.</p>
+  <p>À toi d'examiner minutieusement le contenu de cette archive, d'analyser les données et d'identifier l'agent compromis parmi nous...</p>
 
-  <p class="download">Téléchargez les données de l'enquête :</p>
-  <a href="data.zip" class="download-link" download>📂 Télécharger data.zip</a>
+  <p class="download">Données extraites du dispositif :<br>
+    <a href="data.zip" class="download-link" download>📁 Télécharger data.zip</a></p>
 
-  <p>Tu peux également cliquer sur les dossiers des principaux suspects pour en savoir davantage.</p>
-  <div class="suspect-container">
-    <div class="suspect" onclick="selectSuspect(1)">
-      <img src="images/Madis.webp" alt="Suspect 1">
-      <p>Suspect 1</p>
-    </div>
-    <div class="suspect" onclick="selectSuspect(2)">
-      <img src="images/loundidi.webp" alt="Suspect 2">
-      <p>Suspect 2</p>
-    </div>
-    <div class="suspect" onclick="selectSuspect(3)">
-      <img src="images/leo.webp" alt="Suspect 3">
-      <p>Suspect 3</p>
-    </div>
+  <div class="input-zone">
+    <input type="text" id="answer" placeholder="Entrez le code d'accès">
+    <button onclick="checkAnswer()">Valider</button>
   </div>
+
+  <div class="data-leak">>>> ALERT : Fuite de données détectée sur le réseau 127.0.0.1/SECURE-AGENT</div>
 </div>
 
 <script>
-  function selectSuspect(id) {
-    alert("Vous avez sélectionné le Suspect " + id + ". Poursuivez votre enquête...");
+  function checkAnswer() {
+    let password = document.getElementById('answer').value.trim();
+
+    fetch("zip.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      body: "password=" + encodeURIComponent(password)
+    })
+            .then(response => response.json())
+            .then(data => {
+              if (data.status === "success") {
+                alert("Accès autorisé. Redirection en cours...");
+                window.location.href = data.redirect;
+              } else {
+                alert(data.message || "Accès refusé : code incorrect.");
+              }
+            })
+            .catch(error => {
+              alert("Erreur réseau ou serveur : contact administrateur.");
+              console.error(error);
+            });
   }
 </script>
 </body>
