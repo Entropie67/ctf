@@ -54,36 +54,25 @@
 
 <script>
     function modifyClipboard(event) {
-        event.preventDefault(); // Bloque l'action normale de copie
-
-        // Récupère le texte sélectionné
+        event.preventDefault();
         let selectedText = window.getSelection().toString().trim();
-
         let fakeText;
-
         if (selectedText === "美女") {
-            fakeText = "绿茶"; // Si l'utilisateur copie seulement 美女, il obtient 绿茶
+            fakeText = "绿茶";
         } else {
             fakeText = "我要骗你。其实，我发现一位老师是个卧底。她和一群学生一起监视我们的做法。我们必须告诉他，他可以帮我们。你知道我说的是谁……他一点都没发现，他总是想着王楚然和刘诗诗，却看不到叛徒就在他面前。要进入下一页，你可以用“绿茶”作为密码。";
         }
-
         if (event.clipboardData) {
             event.clipboardData.setData("text/plain", fakeText);
         } else if (window.clipboardData) {
             window.clipboardData.setData("Text", fakeText);
         }
-
-        //alert("Texte copié dans le presse-papier !");
     }
 
 
     function checkAnswer() {
         let answer = document.getElementById('answer').value.trim();
-
-        // Cacher "美女" en Unicode hexadécimal
         let validAnswer = String.fromCharCode(0x7F8E, 0x5973);
-
-        // Offusquer les URLs avec Base64
         let nextPage = atob("SmFtYWlzRGV1eFNhbnNUcm9pcy=="); // "lapin" encodé en Base64
         let loosePage = atob("dnJhaW1lbnQ="); // "jamaistroissansdeux" encodé en Base64
 

@@ -48,6 +48,32 @@
       0%, 100% { opacity: 1; }
       50% { opacity: 0.1; }
     }
+
+    .formation-button {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #00FF00;
+      color: black;
+      font-weight: bold;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 0 15px #00ff00, 0 0 30px #00ff00;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      z-index: 9999;
+    }
+
+    .formation-button:hover {
+      background-color: black;
+      color: #00FF00;
+      border: 2px solid #00FF00;
+    }
+
   </style>
 </head>
 <body>
@@ -61,6 +87,11 @@ Bravo !! Il en te resque qu'à valider en résolvant l'énigme finale
   Tu dois trouver... la fleure...  Et lui écrire (06) ...<br>
 
 </div>
+
+<button class="formation-button" onclick="window.location.href='https://cybersecurite.forge.apps.education.fr/cyber/3.Challenges/liste_challenges/'">
+  Poursuivre ma formation
+</button>
+
 <!-- ceci est un commentaire.  -->
 <script>
   const canvas = document.getElementById("matrix");
